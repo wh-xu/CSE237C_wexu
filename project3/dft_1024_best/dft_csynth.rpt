@@ -1,0 +1,177 @@
+
+
+================================================================
+== Vivado HLS Report for 'dft'
+================================================================
+* Date:           Mon Nov  2 21:31:06 2020
+
+* Version:        2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)
+* Project:        hls
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.372|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +---------+---------+---------+---------+---------+
+    |      Latency      |      Interval     | Pipeline|
+    |   min   |   max   |   min   |   max   |   Type  |
+    +---------+---------+---------+---------+---------+
+    |  5249037|  5249037|  5249037|  5249037|   none  |
+    +---------+---------+---------+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        +---------------------+------------------+------+------+------+------+----------+
+        |                     |                  |   Latency   |   Interval  | Pipeline |
+        |       Instance      |      Module      |  min |  max |  min |  max |   Type   |
+        +---------------------+------------------+------+------+------+------+----------+
+        |dataflow_in_loop_U0  |dataflow_in_loop  |  6160|  6160|  5125|  5125| dataflow |
+        +---------------------+------------------+------+------+------+------+----------+
+
+        * Loop: 
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |          |      Latency      | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name|   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |- Loop 1  |  5249036|  5249036|      6162|          -|          -|  1024|    no    |
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|     38|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |       12|     14|    3298|   5522|    0|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|     18|    -|
+|Register         |        -|      -|      22|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |       12|     14|    3320|   5578|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        4|      6|       3|     10|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +---------------------+------------------+---------+-------+------+------+-----+
+    |       Instance      |      Module      | BRAM_18K| DSP48E|  FF  |  LUT | URAM|
+    +---------------------+------------------+---------+-------+------+------+-----+
+    |dataflow_in_loop_U0  |dataflow_in_loop  |       12|     14|  3298|  5522|    0|
+    +---------------------+------------------+---------+-------+------+------+-----+
+    |Total                |                  |       12|     14|  3298|  5522|    0|
+    +---------------------+------------------+---------+-------+------+------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------+----------+-------+---+----+------------+------------+
+    |        Variable Name       | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------+----------+-------+---+----+------------+------------+
+    |loop_dataflow_input_count   |     +    |      0|  0|  13|          11|           1|
+    |loop_dataflow_output_count  |     +    |      0|  0|  13|          11|           1|
+    |bound_minus_1               |     -    |      0|  0|  12|          12|           1|
+    +----------------------------+----------+-------+---+----+------------+------------+
+    |Total                       |          |      0|  0|  38|          34|           3|
+    +----------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------+----+-----------+-----+-----------+
+    |            Name            | LUT| Input Size| Bits| Total Bits|
+    +----------------------------+----+-----------+-----+-----------+
+    |loop_dataflow_input_count   |   9|          2|   11|         22|
+    |loop_dataflow_output_count  |   9|          2|   11|         22|
+    +----------------------------+----+-----------+-----+-----------+
+    |Total                       |  18|          4|   22|         44|
+    +----------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------+----+----+-----+-----------+
+    |            Name            | FF | LUT| Bits| Const Bits|
+    +----------------------------+----+----+-----+-----------+
+    |loop_dataflow_input_count   |  11|   0|   11|          0|
+    |loop_dataflow_output_count  |  11|   0|   11|          0|
+    +----------------------------+----+----+-----+-----------+
+    |Total                       |  22|   0|   22|          0|
+    +----------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------+-----+-----+------------+--------------+--------------+
+|       RTL Ports      | Dir | Bits|  Protocol  | Source Object|    C Type    |
++----------------------+-----+-----+------------+--------------+--------------+
+|real_sample_address0  | out |   10|  ap_memory |  real_sample |     array    |
+|real_sample_ce0       | out |    1|  ap_memory |  real_sample |     array    |
+|real_sample_d0        | out |   32|  ap_memory |  real_sample |     array    |
+|real_sample_q0        |  in |   32|  ap_memory |  real_sample |     array    |
+|real_sample_we0       | out |    1|  ap_memory |  real_sample |     array    |
+|real_sample_address1  | out |   10|  ap_memory |  real_sample |     array    |
+|real_sample_ce1       | out |    1|  ap_memory |  real_sample |     array    |
+|real_sample_d1        | out |   32|  ap_memory |  real_sample |     array    |
+|real_sample_q1        |  in |   32|  ap_memory |  real_sample |     array    |
+|real_sample_we1       | out |    1|  ap_memory |  real_sample |     array    |
+|imag_sample_address0  | out |   10|  ap_memory |  imag_sample |     array    |
+|imag_sample_ce0       | out |    1|  ap_memory |  imag_sample |     array    |
+|imag_sample_d0        | out |   32|  ap_memory |  imag_sample |     array    |
+|imag_sample_q0        |  in |   32|  ap_memory |  imag_sample |     array    |
+|imag_sample_we0       | out |    1|  ap_memory |  imag_sample |     array    |
+|out_real_address0     | out |   10|  ap_memory |   out_real   |     array    |
+|out_real_ce0          | out |    1|  ap_memory |   out_real   |     array    |
+|out_real_d0           | out |   32|  ap_memory |   out_real   |     array    |
+|out_real_q0           |  in |   32|  ap_memory |   out_real   |     array    |
+|out_real_we0          | out |    1|  ap_memory |   out_real   |     array    |
+|out_real_address1     | out |   10|  ap_memory |   out_real   |     array    |
+|out_real_ce1          | out |    1|  ap_memory |   out_real   |     array    |
+|out_real_d1           | out |   32|  ap_memory |   out_real   |     array    |
+|out_real_q1           |  in |   32|  ap_memory |   out_real   |     array    |
+|out_real_we1          | out |    1|  ap_memory |   out_real   |     array    |
+|out_img_address0      | out |   10|  ap_memory |    out_img   |     array    |
+|out_img_ce0           | out |    1|  ap_memory |    out_img   |     array    |
+|out_img_d0            | out |   32|  ap_memory |    out_img   |     array    |
+|out_img_q0            |  in |   32|  ap_memory |    out_img   |     array    |
+|out_img_we0           | out |    1|  ap_memory |    out_img   |     array    |
+|out_img_address1      | out |   10|  ap_memory |    out_img   |     array    |
+|out_img_ce1           | out |    1|  ap_memory |    out_img   |     array    |
+|out_img_d1            | out |   32|  ap_memory |    out_img   |     array    |
+|out_img_q1            |  in |   32|  ap_memory |    out_img   |     array    |
+|out_img_we1           | out |    1|  ap_memory |    out_img   |     array    |
+|ap_clk                |  in |    1| ap_ctrl_hs |      dft     | return value |
+|ap_rst                |  in |    1| ap_ctrl_hs |      dft     | return value |
+|ap_start              |  in |    1| ap_ctrl_hs |      dft     | return value |
+|ap_done               | out |    1| ap_ctrl_hs |      dft     | return value |
+|ap_ready              | out |    1| ap_ctrl_hs |      dft     | return value |
+|ap_idle               | out |    1| ap_ctrl_hs |      dft     | return value |
++----------------------+-----+-----+------------+--------------+--------------+
+
