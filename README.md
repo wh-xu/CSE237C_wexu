@@ -8,3 +8,5 @@ A repository for CSE237C projects
 - Project 3: DFT
 
 - Project 4: Matrix Multiplication using DPC++
+
+- Final Project: Efficient Accelerations for Attention Model on HLS
